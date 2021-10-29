@@ -1,0 +1,70 @@
+.root {
+    position: relative;
+}
+
+.heading {
+    height: calc(var(--spacing) * 7);
+    text-align: center;
+    margin: 0 calc(var(--spacing) * 8) calc(var(--spacing) * 2) calc(var(--spacing) * 8);
+    font-size: 2.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.heading::before,
+.heading::after {
+    width: var(--icon-size);
+    height: var(--icon-size);
+}
+
+.heading::before {
+    content: "";
+}
+
+.heading::after {
+    content: "";
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: var(--arrow-down);
+}
+
+.list {
+    z-index: 1;
+    user-select: none;
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    width: 75%;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    box-shadow: 0 5px 5px -3px rgb(0 0 0 / 20%), 0 8px 10px 1px rgb(0 0 0 / 14%), 0 3px 14px 2px rgb(0 0 0 / 12%);
+    padding: calc(var(--spacing) * 1) 0;
+    opacity: 0;
+    visibility: hidden;
+    background-color: var(--main-background-color);
+}
+
+.list.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.list li {
+    cursor: pointer;
+    font-size: 2em;
+    text-align: center;
+    padding: calc(var(--spacing) * 3) 0;
+}
+
+.list li:not([class]):hover {
+    background-color: var(--main-background-hover);
+}
+
+.selected {
+    background-color: var(--main-background-selected);
+}

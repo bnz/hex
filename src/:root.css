@@ -1,0 +1,132 @@
+:root {
+    --R: 0;
+    --ratio: 0.8660254;
+    --duration: .1s;
+    --spacing: 8px;
+    --disabled-opacity: 0.3;
+    --icon-size: calc(var(--spacing) * 3);
+    --pointer-events: auto;
+
+    --border-radius: calc(var(--spacing) * 0.5);
+
+    --play-icon: url("./assets/icons.svg#play-light");
+    --restart-button-icon: url("./assets/icons.svg#restart-light");
+
+    --main-text-color-dark: #ccc;
+
+    --__main-background-color-light: rgba(247, 248, 251, 1);
+    --__main-background-color-dark: #303030;
+    --__main-background-hover-light: rgba(0, 0, 0, 0.08);
+    --__main-background-hover-dark: rgba(255, 255, 255, 0.08);
+}
+
+@media (prefers-color-scheme: light) {
+    :root,
+    :root.theme-light {
+        --main-background-color: var(--__main-background-color-light);
+        --main-background-hover: var(--__main-background-hover-light);
+        --main-background-selected: rgba(0, 0, 0, 0.16);
+        --main-text-color: rgba(0, 0, 0, 0.87);
+        --main-text-color-disabled: rgba(0, 0, 0, 0.35);
+        --main-backdrop-background-color: rgba(0, 0, 0, 0.2);
+        --button-background-color: #ccc;
+        --player-mgmnt-clear-hover-background: rgba(255, 255, 255, 0.9);
+
+        --checkbox-empty: url("./assets/icons.svg#checkbox-empty-dark");
+        --checkbox-checked: url("./assets/icons.svg#checkbox-checked-dark");
+        --light-theme-button: url("./assets/icons.svg#light-theme-dark");
+        --dark-theme-button: url("./assets/icons.svg#dark-theme-dark");
+        --system-theme-button: url("./assets/icons.svg#system-dark");
+        --menu-button-open: url("./assets/icons.svg#burger-dark");
+        --menu-button-close: url("./assets/icons.svg#times-dark");
+        --arrow-down: url("./assets/icons.svg#arrow-down-dark");
+        --left-arrow-icon: url("./assets/icons.svg#arrow-left-dark");
+        --rotate-button-icon: url("./assets/icons.svg#rotate-dark");
+        --apply-button-icon: url("./assets/icons.svg#apply-dark");
+        --cancel-button-icon: url("./assets/icons.svg#close-dark");
+        --rotate-left-icon: url("./assets/icons.svg#rotate-left-dark");
+        --rotate-right-icon: url("./assets/icons.svg#rotate-right-dark");
+    }
+
+    :root.theme-dark {
+        --main-background-color: var(--__main-background-color-dark);
+        --main-background-hover: var(--__main-background-hover-dark);
+        --main-background-selected: rgba(255, 255, 255, 0.16);
+        --main-text-color: var(--main-text-color-dark);
+        --main-text-color-disabled: #666;
+        --main-backdrop-background-color: rgba(0, 0, 0, 0.5);
+        --button-background-color: #000;
+        --player-mgmnt-clear-hover-background: rgba(48, 48, 48, 0.9);
+
+        --checkbox-empty: url("./assets/icons.svg#checkbox-empty-light");
+        --checkbox-checked: url("./assets/icons.svg#checkbox-checked-light");
+        --light-theme-button: url("./assets/icons.svg#light-theme-light");
+        --dark-theme-button: url("./assets/icons.svg#dark-theme-light");
+        --system-theme-button: url("./assets/icons.svg#system-light");
+        --menu-button-open: url("./assets/icons.svg#burger-light");
+        --menu-button-close: url("./assets/icons.svg#times-light");
+        --arrow-down: url("./assets/icons.svg#arrow-down-light");
+        --left-arrow-icon: url("./assets/icons.svg#arrow-left-light");
+        --rotate-button-icon: url("./assets/icons.svg#rotate-light");
+        --apply-button-icon: url("./assets/icons.svg#apply-light");
+        --cancel-button-icon: url("./assets/icons.svg#close-light");
+        --rotate-left-icon: url("./assets/icons.svg#rotate-left-light");
+        --rotate-right-icon: url("./assets/icons.svg#rotate-right-light");
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root,
+    :root.theme-dark {
+        --main-background-color: var(--__main-background-color-dark);
+        --main-background-hover: var(--__main-background-hover-dark);
+        --main-background-selected: rgba(255, 255, 255, 0.16);
+        --main-text-color: var(--main-text-color-dark);
+        --main-text-color-disabled: #666;
+        --main-backdrop-background-color: rgba(0, 0, 0, 0.5);
+        --button-background-color: #000;
+        --player-mgmnt-clear-hover-background: rgba(48, 48, 48, 0.9);
+
+        --checkbox-empty: url("./assets/icons.svg#checkbox-empty-light");
+        --checkbox-checked: url("./assets/icons.svg#checkbox-checked-light");
+        --light-theme-button: url("./assets/icons.svg#light-theme-light");
+        --dark-theme-button: url("./assets/icons.svg#dark-theme-light");
+        --system-theme-button: url("./assets/icons.svg#system-light");
+        --menu-button-open: url("./assets/icons.svg#burger-light");
+        --menu-button-close: url("./assets/icons.svg#times-light");
+        --arrow-down: url("./assets/icons.svg#arrow-down-light");
+        --left-arrow-icon: url("./assets/icons.svg#arrow-left-light");
+        --rotate-button-icon: url("./assets/icons.svg#rotate-light");
+        --apply-button-icon: url("./assets/icons.svg#apply-light");
+        --cancel-button-icon: url("./assets/icons.svg#close-light");
+        --rotate-left-icon: url("./assets/icons.svg#rotate-left-light");
+        --rotate-right-icon: url("./assets/icons.svg#rotate-right-light");
+
+    }
+
+    :root.theme-light {
+        --main-background-color: var(--__main-background-color-light);
+        --main-background-hover: var(--__main-background-hover-light);
+        --main-background-selected: rgba(0, 0, 0, 0.16);
+        --main-text-color: rgba(0, 0, 0, 0.87);
+        --main-text-color-disabled: rgba(0, 0, 0, 0.35);
+        --main-backdrop-background-color: rgba(0, 0, 0, 0.2);
+        --button-background-color: #ccc;
+        --player-mgmnt-clear-hover-background: rgba(255, 255, 255, 0.9);
+
+        --checkbox-empty: url("./assets/icons.svg#checkbox-empty-dark");
+        --checkbox-checked: url("./assets/icons.svg#checkbox-checked-dark");
+        --light-theme-button: url("./assets/icons.svg#light-theme-dark");
+        --dark-theme-button: url("./assets/icons.svg#dark-theme-dark");
+        --system-theme-button: url("./assets/icons.svg#system-dark");
+        --menu-button-open: url("./assets/icons.svg#burger-dark");
+        --menu-button-close: url("./assets/icons.svg#times-dark");
+        --arrow-down: url("./assets/icons.svg#arrow-down-dark");
+        --left-arrow-icon: url("./assets/icons.svg#arrow-left-dark");
+        --rotate-button-icon: url("./assets/icons.svg#rotate-dark");
+        --apply-button-icon: url("./assets/icons.svg#apply-dark");
+        --cancel-button-icon: url("./assets/icons.svg#close-dark");
+        --rotate-left-icon: url("./assets/icons.svg#rotate-left-dark");
+        --rotate-right-icon: url("./assets/icons.svg#rotate-right-dark");
+    }
+}

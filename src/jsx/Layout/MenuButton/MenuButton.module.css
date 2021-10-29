@@ -1,0 +1,41 @@
+.root {
+    --margin: var(--spacing);
+    --size: calc(var(--spacing) * 7);
+
+    position: fixed;
+    top: var(--margin);
+    left: var(--margin);
+    width: var(--size);
+    height: var(--size);
+    border: 0;
+    border-radius: 50%;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    background-position: center;
+    cursor: pointer;
+}
+
+.root:active,
+.root:focus {
+    background-color: transparent;
+}
+
+@media (max-width: 599px) {
+    .root {
+        top: auto;
+        left: auto;
+        bottom: var(--margin);
+        right: var(--margin);
+    }
+}
+
+.openMenu {
+    composes: root;
+    background-image: var(--menu-button-open);
+}
+
+.closeMenu {
+    composes: root;
+    background-image: var(--menu-button-close);
+}

@@ -1,17 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { StrictMode } from "react"
+import { render } from "react-dom"
+import { UIStore } from "./Storage/UIStore/UIStore"
+import { UIStoreProvider } from "./Storage/UIStore/UIStoreProvider"
+import { Store } from "./Storage/Store/Store"
+import { StoreProvider } from "./Storage/Store/StoreProvider"
+import { MenuButton } from "./jsx/Layout/MenuButton/MenuButton"
+import { LayoutWrapper } from "./jsx/Layout/LayoutWrapper/LayoutWrapper"
+import { Drawer } from "./jsx/Layout/Drawer/Drawer"
+import { Hex } from "./jsx/Game/Hex"
+import "modern-css-reset"
+import "@fontsource/roboto"
+import "./index.css"
+import "./:root.css"
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const store = new Store()
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+render(
+    <StrictMode>
+        <UIStoreProvider store={new UIStore(store.dispose)}>
+            <StoreProvider store={store}>
+                <LayoutWrapper>
+                    <Hex />
+                </LayoutWrapper>
+                <Drawer />
+                <MenuButton />
+            </StoreProvider>
+        </UIStoreProvider>
+    </StrictMode>,
+    document.getElementById("root"),
+)

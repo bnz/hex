@@ -1,0 +1,13 @@
+.pointy,
+.flat {
+    position: absolute;
+    inset: 1em;
+    overflow: hidden;
+}
+
+@media (orientation: portrait) {
+    .pointy,
+    .flat {
+        /*background-color: #f00;*/
+    }
+}
