@@ -1,11 +1,11 @@
-import { makeAutoObservable, toJS } from "mobx"
+import { makeAutoObservable } from "mobx"
 import { Layout } from "../../jsx/Game/Hexagons/Layout"
 import { Point } from "../../jsx/Game/Hexagons/Point"
 import { Keys, OrientationType, Tiles, Values } from "../../types"
 import { debounce } from "../../helpers/debounce"
 import { LocalStorageMgmnt } from "../LocalStorageMgmnt"
 import { Orientation } from "../../jsx/Game/Hexagons/Orientation"
-import { __DEV__appendStyles } from "./__DEV__appendStyles"
+// import { __DEV__appendStyles } from "./__DEV__appendStyles"
 import { init } from "./applyers/init"
 import { onWindowResize } from "./applyers/onWindowResize"
 
@@ -38,11 +38,8 @@ export class Store {
             | "storage">(this, { ratio: false, largeSide: false, smallSide: false, storage: false })
 
         if (process.env.NODE_ENV === 'development') {
-          new __DEV__appendStyles(this.smallSide, this.largeSide, this.ratio, this.tiles)
+          // new __DEV__appendStyles(this.smallSide, this.largeSide, this.ratio, this.tiles)
         }
-
-        // @ts-ignore
-        window.store = () => toJS(this)
     }
 
     storage = new LocalStorageMgmnt<Keys, Values>("game")
