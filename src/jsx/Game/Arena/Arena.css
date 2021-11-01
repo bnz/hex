@@ -3,6 +3,8 @@
     position: absolute;
     inset: 1em;
     overflow: hidden;
+
+    /*background-color: #99f;*/
 }
 
 @media (orientation: portrait) {

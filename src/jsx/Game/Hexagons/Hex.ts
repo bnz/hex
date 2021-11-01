@@ -1,3 +1,5 @@
+import { TileId } from "../Tile/TileId"
+
 export class Hex {
 
     constructor(
@@ -10,8 +12,8 @@ export class Hex {
         }
     }
 
-    public get id() {
-        return `${this.q},${this.r}`
+    public get id(): TileId {
+        return `${this.q},${this.r}` as TileId
     }
 
     public add(b: Hex): Hex {

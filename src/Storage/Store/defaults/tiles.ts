@@ -1,6 +1,6 @@
 type Tile = [q: number, r: number]
 
-export const tiles = (_size: 11 | 19): Tile[] => {
+export const tiles = (_size: 11): Tile[] => {
     const size = _size + 2
     const result: Tile[] = []
     const fromTo = (size - 1) / 2
@@ -13,5 +13,13 @@ export const tiles = (_size: 11 | 19): Tile[] => {
         a--
     }
 
-    return result
+    const qs = result.map(([q]) => q)
+    const rs = result.map(([, r]) => r)
+    const max = [Math.max(...qs), Math.min(...rs)].join(",")
+    const min = [Math.min(...qs), Math.max(...rs)].join(",")
+
+    return result.filter((item) => {
+        const id = item.join(",")
+        return id !== max && id !== min
+    })
 }

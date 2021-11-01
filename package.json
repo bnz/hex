@@ -27,7 +27,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "generateTileId": "node_modules/.bin/ts-node -O '{ \"module\": \"commonjs\" }' ./dev/generateTileId.js",
+    "generateBgImageIds": "node_modules/.bin/ts-node -O '{ \"module\": \"commonjs\" }' ./dev/generateBgImageIds.js"
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +50,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "3.2.3"
+    "gh-pages": "3.2.3",
+    "ts-node": "10.4.0"
   }
 }

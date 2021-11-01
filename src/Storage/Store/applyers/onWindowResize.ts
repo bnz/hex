@@ -1,6 +1,6 @@
 import { recalc } from "./recalc"
 import { Store } from "../Store"
-import { runInAction } from "mobx"
+import { runInAction, toJS } from "mobx"
 
 type OnWindowResize = (store: Store) => () => void
 

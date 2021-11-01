@@ -13,11 +13,11 @@ export class Store {
 
     readonly ratio = 0.8660254
 
-    readonly largeSide = 17
+    largeSide = 19
 
-    readonly smallSide = this.largeSide * this.ratio
+    smallSide = this.largeSide * this.ratio
 
-    readonly size: 11 | 19 = 11
+    readonly size: 11 = 11
 
     width = 0
 

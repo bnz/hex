@@ -3,12 +3,13 @@ import cx from "classnames"
 import { observer } from "mobx-react"
 import styles from "./Drawer.module.css"
 import { useUIStore } from "../../../Storage/UIStore/UIStoreProvider"
+import { UIPhase } from "../../../types"
+import { Footer } from "./Footer/Footer"
 import { GamesSwitcher } from "./GamesSwitcher/GamesSwitcher"
 import { LanguageSwitcher } from "./LanguageSwitcher/LanguageSwitcher"
-import { Footer } from "./Footer/Footer"
 import { ThemeSwitcher } from "./ThemeSwitcher/ThemeSwitcher"
-import { UIPhase } from "../../../types"
 import { RestartGame } from "./RestartGame/RestartGame"
+import { RotateLayout } from "./RotateLayout/RotateLayout"
 
 export const Drawer: FC = observer(() => {
     const store = useUIStore()
@@ -25,6 +26,7 @@ export const Drawer: FC = observer(() => {
                         <>
                             <div className={styles.actions}>
                                 <RestartGame />
+                                <RotateLayout />
                             </div>
                         </>
                     )}

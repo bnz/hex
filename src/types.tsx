@@ -11,6 +11,7 @@ export type Tiles = Record<string, Tile>
 
 export interface Tile {
     hex: Hex
+    type: HexType
 }
 
 export type Keys =
@@ -19,3 +20,8 @@ export type Keys =
 
 export type Values =
     | OrientationType
+
+export enum HexType {
+    fieldItem,
+    border,
+}
