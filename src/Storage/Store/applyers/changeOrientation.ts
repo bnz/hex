@@ -3,7 +3,7 @@ import { Layout } from "../../../jsx/Game/Hexagons/Layout"
 import { recalc } from "./recalc"
 import { Store } from "../Store"
 
-export const changeOrientation = (store: Store) => (orientation: "flat" | "pointy") => () => {
+export const changeOrientation = (store: Store, orientation: "flat" | "pointy") => () => {
     runInAction(() => {
         store.orientation = orientation === "flat" ? Layout.flat : Layout.pointy
         const [width, height] = store.elSizes

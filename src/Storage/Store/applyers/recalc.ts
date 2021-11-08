@@ -10,6 +10,7 @@ export const recalc = (store: Store): void => {
 
     runInAction(() => {
         store.R = Math.min(store.width / widthSize, store.height / heightSize)
+        // store.R = store.width / widthSize
 
         const orientation = store.orientation
         const size = new Point(

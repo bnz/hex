@@ -3,7 +3,7 @@ import { useStore } from "../../../Storage/Store/StoreProvider"
 import { Tile } from "./Tile"
 import { makeAutoObservable } from "mobx"
 import "./Tile.css"
-import "./Tiles.css"
+// import "./Tiles.css"
 
 export interface Data<T> {
     data: T

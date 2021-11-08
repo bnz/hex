@@ -1,8 +1,18 @@
 .pointy,
 .flat {
     position: absolute;
-    inset: 1em;
+
+    --margin: 0;
+
+    top: var(--margin);
+    left: var(--margin);
+    right: var(--margin);
+    bottom: var(--margin);
     overflow: hidden;
+
+    /*height: calc(var(--R) * 2 * 17 + var(--R) * 4);*/
+
+    outline: 1px solid #f99;
 
     /*background-color: #99f;*/
 }

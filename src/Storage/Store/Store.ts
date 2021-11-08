@@ -5,9 +5,9 @@ import { Keys, OrientationType, Tiles, Values } from "../../types"
 import { debounce } from "../../helpers/debounce"
 import { LocalStorageMgmnt } from "../LocalStorageMgmnt"
 import { Orientation } from "../../jsx/Game/Hexagons/Orientation"
-// import { __DEV__appendStyles } from "./__DEV__appendStyles"
 import { init } from "./applyers/init"
 import { onWindowResize } from "./applyers/onWindowResize"
+import { TileId } from "../../jsx/Game/Tile/TileId"
 
 export class Store {
 
@@ -27,7 +27,7 @@ export class Store {
 
     preSit = false
 
-    hoveredId: string | null = null
+    hoveredId: TileId | null = null
 
     constructor() {
         init(this)
@@ -37,8 +37,8 @@ export class Store {
             | "smallSide"
             | "storage">(this, { ratio: false, largeSide: false, smallSide: false, storage: false })
 
-        if (process.env.NODE_ENV === 'development') {
-          // new __DEV__appendStyles(this.smallSide, this.largeSide, this.ratio, this.tiles)
+        if (process.env.NODE_ENV === "development") {
+            new (require("./__DEV__appendStyles").__DEV__appendStyles)(this.smallSide, this.largeSide, this.ratio, this.tiles)
         }
     }
 
@@ -70,7 +70,7 @@ export class Store {
         window.addEventListener("resize", this.debounce, false)
     }
 
-    get elSizes() {
+    get elSizes(): [number, number] {
         const arenaElement = this.arenaElement
 
         if (arenaElement) {

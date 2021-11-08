@@ -13,12 +13,12 @@ export const RotateLayout: FC = observer(() => {
             <button
                 disabled={!isPointy}
                 className={styles.flat}
-                onClick={changeOrientation(store)("flat")}
+                onClick={changeOrientation(store, "flat")}
             />
             <button
                 disabled={isPointy}
                 className={styles.pointy}
-                onClick={changeOrientation(store)("pointy")}
+                onClick={changeOrientation(store, "pointy")}
             />
         </div>
     )

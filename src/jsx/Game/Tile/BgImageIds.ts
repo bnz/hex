@@ -1,4 +1,6 @@
 export type BgImageIds =
+  | "frame"
+  | "_-p-1"
   | "_"
   | "c-1-1"
   | "c-1-2"

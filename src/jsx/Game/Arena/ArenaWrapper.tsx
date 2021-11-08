@@ -30,7 +30,10 @@ export const ArenaWrapper: FC = observer(({ children }) => {
                     // onDoubleClick: applySit(store),
                     children,
                 }
-            }, [store.arenaElement, store.R])}
+            }, [
+                store.arenaElement,
+                // store.R,
+            ])}
         />
     )
 })
