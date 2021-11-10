@@ -1,5 +1,6 @@
 .wrap {
     composes: box from "../Drawer.module.css";
+    margin-bottom: calc(var(--spacing) * 5);
 }
 
 .button {

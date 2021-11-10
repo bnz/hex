@@ -19,4 +19,8 @@ export const eng: LanguageMap = {
     "button.apply": "Apply",
 
     currentGameWillBeLost: "Current game will be lost.",
+
+    "text.placeChip": "Place chip",
+    "text.rotateField": "Rotate field",
+    "text.showDrawer": "Show drawer",
 }

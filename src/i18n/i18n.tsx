@@ -1,15 +1,16 @@
-import { i18nKeys } from './i18nKeys'
-import { rus } from './rus'
-import { eng } from './eng'
+import { i18nKeys } from "./i18nKeys"
+import { rus } from "./rus"
+import { eng } from "./eng"
+// import { FC } from "react"
 
-export type Language = 'rus' | 'eng'
+export type Language = "rus" | "eng"
 
-const languageDefaultState: Language = 'rus'
+const languageDefaultState: Language = "rus"
 
 type I18n = (key: i18nKeys | string) => string
 
-const commonSettings = JSON.parse(localStorage.getItem('ui') || JSON.stringify({
-  language: languageDefaultState,
+const commonSettings = JSON.parse(localStorage.getItem("ui") || JSON.stringify({
+    language: languageDefaultState,
 }))
 
 const lang: Language = commonSettings.language || languageDefaultState
@@ -17,16 +18,24 @@ const lang: Language = commonSettings.language || languageDefaultState
 export type LanguageMap = Record<i18nKeys, string>
 
 const languagesMap: Record<Language, LanguageMap> = {
-  rus,
-  eng,
+    rus,
+    eng,
 }
 
 export const i18n: I18n = (key) => {
-  const res = languagesMap[lang][key as i18nKeys]
+    const res = languagesMap[lang][key as i18nKeys]
 
-  if (res === undefined) {
-    return `~${key}~`
-  }
+    if (res === undefined) {
+        return `~${key}~`
+    }
 
-  return res
+    return res
 }
+
+// interface I18nProps {
+//     children: i18nKeys | string
+// }
+//
+// export const I18n: FC<I18nProps> = ({ children }) => (
+//     <>{i18n(children)}</>
+// )

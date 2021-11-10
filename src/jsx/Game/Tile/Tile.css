@@ -12,9 +12,16 @@
     height: calc(var(--R) * 2 * var(--ratio));
 }
 
-.flat [data-hovered][data-qr],
-.pointy [data-hovered][data-qr] {
+.flat [data-hovered-p1][data-qr],
+.pointy [data-hovered-p1][data-qr] {
     pointer-events: auto;
     cursor: none;
     background-image: url("../../../assets/hex.svg#_-p-1");
+}
+
+.flat [data-hovered-p2][data-qr],
+.pointy [data-hovered-p2][data-qr] {
+    pointer-events: auto;
+    cursor: none;
+    background-image: url("../../../assets/hex.svg#_-p-2");
 }

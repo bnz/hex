@@ -4,8 +4,6 @@ import { tilesMap } from "./tilesMap"
 import svg from "../../../assets/hex.svg"
 import { BgImageIds } from "./BgImageIds"
 
-console.log(svg)
-
 const toUrl = (uri: string) => (id: BgImageIds): string => `url(${uri}#${id})`
 
 export const kebabize = (str: string) =>

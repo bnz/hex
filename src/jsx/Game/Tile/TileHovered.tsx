@@ -14,10 +14,15 @@ const usePrevious = <T, >(value: T) => {
 }
 
 export const TileHovered: FC = observer(() => {
-    const hoveredId = useStore().hoveredId
+    const store = useStore()
+    const hoveredId = store.hoveredId
     const prev = usePrevious<TileId | null>(hoveredId) // TODO ? || "0,0" <-- initial position in center?
+    const move = store.playerMove
 
     return (
-        <div data-hovered="" data-qr={hoveredId === null ? prev : hoveredId} />
+        <div
+            {...{ [`data-hovered-p${move}`]: "" }}
+            data-qr={hoveredId === null ? prev : hoveredId}
+        />
     )
 })

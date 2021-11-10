@@ -1,0 +1,10 @@
+.root {
+    list-style: none;
+    padding: 0 var(--spacing);
+    margin: 0;
+    font-size: 1.25em;
+}
+
+.root li {
+    margin-bottom: 0.25em;
+}

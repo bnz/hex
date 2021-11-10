@@ -5,3 +5,5 @@ export type KeyCodes =
     | "Space"
     | "Enter"
     | "NumpadEnter"
+    | "KeyR"
+    | "KeyD"

@@ -1,16 +1,19 @@
 import { HexType, Tiles } from "../../../types"
-import { toHex } from "./toHex"
 import { tilesMapKeys } from "../../../jsx/Game/Tile/tilesMap"
 import { QR } from "../defaults/tiles"
+import { TileId } from "../../../jsx/Game/Tile/TileId"
+import { Hex } from "../../../jsx/Game/Hexagons/Hex"
 
 export const generateTiles = (data: QR[]): Tiles => {
-    const res: Tiles = {}
-    data.forEach(([q, r]) => {
-        const hex = toHex(q, r)
-        res[hex.id] = {
-            hex,
-            type: tilesMapKeys.includes(hex.id) ? HexType.border : HexType.fieldItem,
+    const result: Tiles = {} as Tiles
+
+    data.forEach((item) => {
+        const id = item.join(",") as TileId
+        result[id] = {
+            hex: { q: item[0], r: item[1] } as Hex,
+            type: tilesMapKeys.includes(id) ? HexType.border : HexType.emptyCell,
         }
     })
-    return res
+
+    return result
 }

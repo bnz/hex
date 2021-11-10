@@ -2,7 +2,10 @@ export type QR = [q: number, r: number]
 
 export const tiles = (_size: 11): QR[] => {
     const size = _size + 2
+
     const result: QR[] = []
+
+
     const fromTo = (size - 1) / 2
     let a = 0
 

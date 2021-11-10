@@ -10,6 +10,7 @@ import { LanguageSwitcher } from "./LanguageSwitcher/LanguageSwitcher"
 import { ThemeSwitcher } from "./ThemeSwitcher/ThemeSwitcher"
 import { RestartGame } from "./RestartGame/RestartGame"
 import { RotateLayout } from "./RotateLayout/RotateLayout"
+import { KeyMapHints } from "./KeyMapHints/KeyMapHints"
 
 export const Drawer: FC = observer(() => {
     const store = useUIStore()
@@ -27,6 +28,7 @@ export const Drawer: FC = observer(() => {
                             <div className={styles.actions}>
                                 <RestartGame />
                                 <RotateLayout />
+                                <KeyMapHints />
                             </div>
                         </>
                     )}

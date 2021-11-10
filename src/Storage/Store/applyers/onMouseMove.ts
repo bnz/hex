@@ -14,7 +14,7 @@ export const onMouseMove: OnMouseMove = (store) => (e) => {
     const hex = store.layout.pixelToHex({ x: e.pageX - rect.x, y: e.pageY - rect.y }).round()
 
     runInAction(() => {
-        if (store.tiles[hex.id] && store.tiles[hex.id].type === HexType.fieldItem) {
+        if (store.tiles[hex.id] && store.tiles[hex.id].type === HexType.emptyCell) {
             store.hoveredId = hex.id
         } else {
             store.hoveredId = null

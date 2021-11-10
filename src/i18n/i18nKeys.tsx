@@ -17,3 +17,7 @@ export type i18nKeys =
     | "button.apply"
 
     | "currentGameWillBeLost"
+
+    | "text.placeChip"
+    | "text.rotateField"
+    | "text.showDrawer"

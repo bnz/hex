@@ -1,15 +1,22 @@
 import { FC } from "react"
 import { observer } from "mobx-react"
-import { Data } from "./Tiles"
 import { TileId } from "./TileId"
+import { HexType } from "../../../types"
 
-// import { bgImage } from "./bgImage"
+export interface Data<T> {
+    data: T
+}
 
 export interface TileProps {
     qr: TileId
+    p?: HexType.p1 | HexType.p2
     border?: boolean
 }
 
 export const Tile: FC<Data<TileProps>> = observer(({ data }) => (
-    <div data-qr={data.qr} {...(data.border ? { "data-b": "" } : {})} />
+    <div
+        data-qr={data.qr}
+        {...(data.p ? { className: `p${data.p}` } : {})}
+        {...(data.border ? { "data-b": "" } : {})}
+    />
 ))

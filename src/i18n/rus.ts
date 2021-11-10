@@ -19,4 +19,8 @@ export const rus: LanguageMap = {
     "button.apply": "Применить",
 
     currentGameWillBeLost: "Текущая игра будет утеряна.",
+
+    "text.placeChip": "Поставить фишку",
+    "text.rotateField": "Повернуть поле",
+    "text.showDrawer": "Показать меню",
 }

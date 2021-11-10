@@ -1,13 +1,14 @@
 import { makeAutoObservable } from "mobx"
 import { Layout } from "../../jsx/Game/Hexagons/Layout"
 import { Point } from "../../jsx/Game/Hexagons/Point"
-import { Keys, OrientationType, Tiles, Values } from "../../types"
+import { HexType, Keys, OrientationType, Tiles, Values } from "../../types"
 import { debounce } from "../../helpers/debounce"
 import { LocalStorageMgmnt } from "../LocalStorageMgmnt"
 import { Orientation } from "../../jsx/Game/Hexagons/Orientation"
 import { init } from "./applyers/init"
 import { onWindowResize } from "./applyers/onWindowResize"
 import { TileId } from "../../jsx/Game/Tile/TileId"
+import { PlayerMove } from "./applyers/onClick"
 
 export class Store {
 
@@ -49,15 +50,36 @@ export class Store {
 
     storage = new LocalStorageMgmnt<Keys, Values>("game")
 
-    tiles: Tiles = {}
+    private _tiles: Tiles = {} as Tiles
+
+    get tiles(): Tiles {
+        return this._tiles
+    }
+
+    set tiles(tiles: Tiles) {
+        this._tiles = tiles
+        this.storage.set("tiles", this.tiles)
+    }
 
     layout: Layout = new Layout(this.orientation, new Point(0, 0), new Point(0, 0))
+
+    private _playerMove: PlayerMove = HexType.p1
+
+    get playerMove() {
+        return this._playerMove
+    }
+
+    set playerMove(playerMove) {
+        this._playerMove = playerMove
+        this.storage.set("playerMove", this.playerMove)
+    }
 
     dispose = (): void => {
         try {
             window.removeEventListener("resize", this.debounce)
             this.storage.destroy()
             init(this)
+            window.location.reload()
         } catch (e) {
             console.warn("%cTODO", "font-size:50px;", e)
         }

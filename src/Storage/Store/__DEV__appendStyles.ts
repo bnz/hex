@@ -2,6 +2,8 @@ import { OrientationType, Tiles } from "../../types"
 import { Layout } from "../../jsx/Game/Hexagons/Layout"
 import { Point } from "../../jsx/Game/Hexagons/Point"
 import { bgImage, kebabize } from "../../jsx/Game/Tile/bgImage"
+import { tilesMap } from "../../jsx/Game/Tile/tilesMap"
+// import svg from "../../assets/hex.svg"
 
 export class __DEV__appendStyles {
 
@@ -47,10 +49,11 @@ export class __DEV__appendStyles {
 
         Object.entries(this.tiles).forEach(([, { hex }]) => {
             const { x, y } = layout.hexToPixel(hex)
-            const bg = bgImage(
-                hex.id,
-                "../../../assets/hex.svg",
-            )
+
+            // const url = svg
+            const url = "../../../assets/hex.svg"
+
+            const bg = bgImage(hex.id, url)
 
             let background = ""
             Object.keys(bg).forEach((key) => {
@@ -61,8 +64,12 @@ export class __DEV__appendStyles {
 
             const transform = `transform: translate(calc(${x - 1} * var(--R)), calc(${y - this.ratio} * var(--R))${isPointy ? `) rotate(-30deg)` : ")"};`
 
-            arr.push(`.${orientation} [data-qr="${hex.id}"] { ${background} }`)
-            arr.push(`.${orientation} [data-qr="${hex.id}"] { ${transform} }`)
+            arr.push(`.${orientation} [data-qr="${hex.id}"] { ${[background, transform].join(" ")} }`)
+
+            if (tilesMap[hex.id] === undefined) {
+                arr.push(`.${orientation} [data-qr="${hex.id}"].p1 { background-image: url(${url}#_p1); }`)
+                arr.push(`.${orientation} [data-qr="${hex.id}"].p2 { background-image: url(${url}#_p2); }`)
+            }
         })
 
         return arr.join("\n")
