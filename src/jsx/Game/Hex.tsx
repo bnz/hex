@@ -4,7 +4,6 @@ import { UIPhase } from "../../types"
 import { StartButton } from "../Rules/StartButton/StartButton"
 import { observer } from "mobx-react"
 import { Arena } from "./Arena/Arena"
-import { AspectRatio } from "../Components/AspectRatio/AspectRatio"
 
 export const Hex: FC = observer(() => {
     switch (useUIStore().phase) {
@@ -21,9 +20,7 @@ export const Hex: FC = observer(() => {
             )
         case UIPhase.GAME:
             return (
-                <AspectRatio>
-                    <Arena />
-                </AspectRatio>
+                <Arena />
             )
         default:
             return null

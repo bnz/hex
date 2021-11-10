@@ -10,15 +10,11 @@
     transition-duration: var(--duration);
     width: calc(var(--R) * 2);
     height: calc(var(--R) * 2 * var(--ratio));
-
-    /*
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    */
 }
 
 .flat [data-hovered][data-qr],
 .pointy [data-hovered][data-qr] {
+    pointer-events: auto;
+    cursor: none;
     background-image: url("../../../assets/hex.svg#_-p-1");
 }

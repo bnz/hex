@@ -1,0 +1,26 @@
+:root {
+    --video-height: 100vh;
+}
+
+@media screen and (orientation: portrait) {
+    :root {
+        --video-height: 42vh;
+    }
+}
+
+@media screen and (orientation: portrait) and (min-aspect-ratio: 3/4) {
+    :root {
+        --video-height: calc(100vw * 9 / 16);
+    }
+}
+
+.video {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100vmin;
+    height: 100vmin;
+    margin: auto;
+}

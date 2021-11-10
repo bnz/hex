@@ -1,6 +1,6 @@
 .button {
     border: 0;
-    margin: 0;
+    margin: calc(var(--spacing) * 5);
     appearance: none;
     cursor: pointer;
     display: inline-flex;

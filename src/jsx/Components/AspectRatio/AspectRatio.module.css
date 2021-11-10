@@ -1,14 +1,18 @@
 .container {
-    width: 100%;
-    padding-top: 100%; /* 1:1 Aspect Ratio */
+    /*width: 100%;*/
+    /*padding-top: 100%; !* 1:1 Aspect Ratio *!*/
+    /*padding-top: 56.25%; !* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) *!*/
+    /*padding-top: 177%; !* 9:16 *!*/
     position: relative;
-    max-height: 100vh;
+    /*max-height: 100vh;*/
+
+    height: 100vmin;
+    aspect-ratio: 9/16;
+    margin: auto;
 }
 
 .inner {
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    inset: 0;
+    outline: 1px solid #f00;
 }

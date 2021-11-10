@@ -1,25 +1,18 @@
 .pointy,
 .flat {
     position: absolute;
-
-    --margin: 0;
-
-    top: var(--margin);
-    left: var(--margin);
-    right: var(--margin);
-    bottom: var(--margin);
+    left: 50%;
+    top: 50%;
+    width: 100%;
     overflow: hidden;
-
-    /*height: calc(var(--R) * 2 * 17 + var(--R) * 4);*/
-
-    outline: 1px solid #f99;
-
-    /*background-color: #99f;*/
+    transform: translate(-50%, -50%);
+    aspect-ratio: 5/8;
+    margin: auto;
 }
 
-@media (orientation: portrait) {
+@media (min-aspect-ratio: 5/8) {
     .pointy,
     .flat {
-        /*background-color: #f00;*/
+        height: 100vh;
     }
 }

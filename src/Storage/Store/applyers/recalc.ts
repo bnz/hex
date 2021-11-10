@@ -5,25 +5,22 @@ import { Point } from "../../../jsx/Game/Hexagons/Point"
 
 export const recalc = (store: Store): void => {
     const isPointy = store.isPointy
-    const widthSize = isPointy ? store.smallSide * 2 : store.largeSide * 2
-    const heightSize = isPointy ? store.largeSide * 2 : store.smallSide * 2
+    const widthSize = isPointy ? store.smallSide : store.largeSide
+    const heightSize = isPointy ? store.largeSide : store.smallSide
 
     runInAction(() => {
-        store.R = Math.min(store.width / widthSize, store.height / heightSize)
-        // store.R = store.width / widthSize
-
-        const orientation = store.orientation
-        const size = new Point(
-            store.R,
-            store.R
-        )
-        const origin = new Point(
-            store.width / 2,
-            store.R * (isPointy ? store.largeSide : store.smallSide),
+        store.R = Math.min(
+            store.width / widthSize,
+            store.height / (heightSize * 2)
         )
 
-        // console.log({ orientation, size, origin })
-
-        store.layout = new Layout(orientation, size, origin)
+        store.layout = new Layout(
+            store.orientation,
+            new Point(store.R, store.R),
+            new Point(
+                store.width / 2,
+                store.R * heightSize,
+            ),
+        )
     })
 }

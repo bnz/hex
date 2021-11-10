@@ -15,7 +15,7 @@ const usePrevious = <T, >(value: T) => {
 
 export const TileHovered: FC = observer(() => {
     const hoveredId = useStore().hoveredId
-    const prev = usePrevious<TileId | null>(hoveredId)
+    const prev = usePrevious<TileId | null>(hoveredId) // TODO ? || "0,0" <-- initial position in center?
 
     return (
         <div data-hovered="" data-qr={hoveredId === null ? prev : hoveredId} />

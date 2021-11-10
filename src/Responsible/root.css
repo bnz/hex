@@ -1,0 +1,82 @@
+/*
+    @function px-to-rem($px, $base: 16) {
+        @return ($px / $base) + rem;
+    }
+*/
+
+:root {
+    ---in-game-message-height: 16px;
+    --video-height: 100vh;
+}
+
+@media screen and (orientation: portrait) {
+    :root {
+        --video-height: 42vh;
+    }
+}
+
+@media screen and (orientation: portrait) and (min-aspect-ratio: 3/4) {
+    :root {
+        --video-height: calc(100vw * 9 / 16);
+    }
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+:root {
+    --mobile-layout-spacing: 0.3125rem;
+    --mobile-layout-chip-tray-width: 4.25rem;
+    --mobile-layout-road-column-count: 18;
+}
+
+@media screen and (orientation: portrait) {
+    :root {
+        --mobile-layout-wrapper-left: var(--mobile-layout-spacing);
+        --mobile-layout-wrapper-right: var(--mobile-layout-spacing);
+        --mobile-layout-top: calc(var(--video-height) - var(--mobile-layout-spacing) * 6);
+        --mobile-layout-chiptray-right: calc(var(--mobile-layout-chip-tray-width) + var(--mobile-layout-spacing));
+        --mobile-layout-road-cell-size-with-chiptray: calc(
+                (100vw - 2 * var(--mobile-layout-spacing) - var(--mobile-layout-chip-tray-width))
+                / (var(--mobile-layout-road-column-count) * 2)
+        );
+
+        /*
+         * Note: this var should be used only with translateX/translateY
+         */
+        --mobile-layout-top-open: calc(-1 * var(--mobile-layout-top) + 100vh - 100% - var(--mobile-layout-spacing) - 6.875rem);
+
+        --mobile-layout-road-cell-size: calc(
+                (100vw - var(--mobile-layout-wrapper-left) - var(--mobile-layout-wrapper-right))
+                / (var(--mobile-layout-road-column-count) * 2)
+        );
+    }
+}
+
+@media screen and (orientation: portrait) and (min-aspect-ratio: 3/4) {
+    :root {
+        --mobile-layout-top: calc(var(--video-height) - var(--mobile-layout-spacing) * 10);
+    }
+}
+
+@media screen and (orientation: landscape) {
+    :root {
+        --mobile-layout-road-column-count: 26;
+        --mobile-layout-road-cell-size-with-chiptray: var(--mobile-layout-road-cell-size);
+
+        /* 25px = status bar + traffic light TODO: calculate */
+        --mobile-layout-top: calc(var(--mobile-layout-spacing) + 1.5625rem);
+
+        /* 15px - bottom black hole TODO: calculate */
+        --mobile-layout-bottom: calc(var(---in-game-message-height) + 0.3125rem);
+        --mobile-layout-available-height: calc(100vh - var(--mobile-layout-top) - var(--mobile-layout-bottom));
+
+        /*  1.6 - layout (felt + statistics) aspect ratio */
+        --mobile-layout-width: calc(var(--mobile-layout-available-height) * 1.6);
+        --mobile-layout-min-left-right-spacing: calc(var(--mobile-layout-chip-tray-width) + var(--mobile-layout-spacing));
+        --mobile-layout-wrapper-left: max(var(--mobile-layout-min-left-right-spacing), calc((100vw - var(--mobile-layout-width)) * 0.5));
+        --mobile-layout-wrapper-right: var(--mobile-layout-wrapper-left);
+
+        /* 175.06 / 598 - layout (felt + statistics) aspect ratio */
+        --mobile-layout-felt-height: calc((100vw - (var(--mobile-layout-wrapper-right) * 2)) * 175.06 / 598);
+    }
+}

@@ -3,7 +3,9 @@ import { useStore } from "../../../Storage/Store/StoreProvider"
 import { Tile } from "./Tile"
 import { makeAutoObservable } from "mobx"
 import "./Tile.css"
-// import "./Tiles.css"
+import { HexType } from "../../../types"
+
+import "./Tiles.css"
 
 export interface Data<T> {
     data: T
@@ -16,6 +18,9 @@ export const Tiles: FC = () => (
                 get qr() {
                     return entry[1].hex.id
                 },
+                get border() {
+                    return entry[1].type === HexType.border
+                }
             })} />
         ))}
     </>

@@ -13,9 +13,9 @@ export class Store {
 
     readonly ratio = 0.8660254
 
-    largeSide = 19
+    readonly largeSide = 18
 
-    smallSide = this.largeSide * this.ratio
+    readonly smallSide = 18 * this.ratio
 
     readonly size: 11 = 11
 
@@ -35,10 +35,15 @@ export class Store {
             | "ratio"
             | "largeSide"
             | "smallSide"
-            | "storage">(this, { ratio: false, largeSide: false, smallSide: false, storage: false })
+            | "storage">(this, {
+            ratio: false,
+            largeSide: false,
+            smallSide: false,
+            storage: false,
+        })
 
         if (process.env.NODE_ENV === "development") {
-            new (require("./__DEV__appendStyles").__DEV__appendStyles)(this.smallSide, this.largeSide, this.ratio, this.tiles)
+            // new (require("./__DEV__appendStyles").__DEV__appendStyles)(this.smallSide, this.largeSide, this.ratio, this.tiles)
         }
     }
 

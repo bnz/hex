@@ -5,7 +5,7 @@
     --spacing: 8px;
     --disabled-opacity: 0.3;
     --icon-size: calc(var(--spacing) * 3);
-    --pointer-events: auto;
+    --pointer-events: none;
 
     --border-radius: calc(var(--spacing) * 0.5);
 

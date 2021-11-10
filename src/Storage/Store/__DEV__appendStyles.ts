@@ -26,7 +26,7 @@ export class __DEV__appendStyles {
                     this.generateCoords("flat"),
                 ].join("\n")
                 this.head.appendChild(style)
-                // console.log(style.innerHTML)
+                console.log(style.innerHTML)
             }
         }, 0)
     }
@@ -49,7 +49,7 @@ export class __DEV__appendStyles {
             const { x, y } = layout.hexToPixel(hex)
             const bg = bgImage(
                 hex.id,
-                // "../../../assets/hex.svg",
+                "../../../assets/hex.svg",
             )
 
             let background = ""

@@ -4,7 +4,7 @@ import { observer } from "mobx-react"
 import { useStore } from "../../../Storage/Store/StoreProvider"
 import { onMouseMove } from "../../../Storage/Store/applyers/onMouseMove"
 // import { applySit } from "../../../Storage/Store/applyers/applySit"
-// import { onClick } from "../../../Storage/Store/applyers/onClick"
+import { onClick } from "../../../Storage/Store/applyers/onClick"
 import "./Arena.css"
 
 export const ArenaWrapper: FC = observer(({ children }) => {
@@ -25,14 +25,15 @@ export const ArenaWrapper: FC = observer(({ children }) => {
                 }
 
                 return {
-                    // onClick: onClick(store),
+                    style:{ ["--R" as string]: `${store.R}px` },
+                    onClick: onClick(store),
                     onMouseMove: onMouseMove(store),
                     // onDoubleClick: applySit(store),
                     children,
                 }
             }, [
                 store.arenaElement,
-                // store.R,
+                store.R,
             ])}
         />
     )
