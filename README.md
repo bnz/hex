@@ -1,6 +1,6 @@
 ### Thanks to
 
-[Hexagonal Grids](https://www.redblobgames.com/grids/hexagons/app)
+[Hexagonal Grids](https://www.redblobgames.com/grids/hexagons/)
 
 ### Game rules
 
