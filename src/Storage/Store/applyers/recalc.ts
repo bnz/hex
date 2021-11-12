@@ -1,7 +1,7 @@
 import { Store } from "../Store"
 import { runInAction } from "mobx"
-import { Layout } from "../../../jsx/Game/Hexagons/Layout"
-import { Point } from "../../../jsx/Game/Hexagons/Point"
+import { Layout } from "../../../jsx/Hexagons/Layout"
+import { Point } from "../../../jsx/Hexagons/Point"
 
 export const recalc = (store: Store): void => {
     const isPointy = store.isPointy

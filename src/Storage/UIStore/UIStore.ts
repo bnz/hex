@@ -32,7 +32,7 @@ export class UIStore {
         reaction(() => this.drawer, this.drawerReaction)
     }
 
-    storage = new LocalStorageMgmnt<UIKeys, UIValues>("ui")
+    storage = new LocalStorageMgmnt<UIKeys, UIValues>("hex-ui")
 
     // Drawer - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

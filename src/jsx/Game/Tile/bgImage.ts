@@ -18,7 +18,7 @@ export const bgImage = (id: TileId, uri: string = svg): CSSProperties => {
 
     if (hash === undefined) {
         return {
-            backgroundImage: fn("_"),
+            backgroundImage: fn("bg"),
         }
     }
 

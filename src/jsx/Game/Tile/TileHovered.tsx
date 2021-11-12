@@ -21,7 +21,7 @@ export const TileHovered: FC = observer(() => {
 
     return (
         <div
-            {...{ [`data-hovered-p${move}`]: "" }}
+            {...{ [`data-hovered-player-${move}`]: "" }}
             data-qr={hoveredId === null ? prev : hoveredId}
         />
     )

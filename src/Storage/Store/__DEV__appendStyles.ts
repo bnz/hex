@@ -1,6 +1,6 @@
 import { OrientationType, Tiles } from "../../types"
-import { Layout } from "../../jsx/Game/Hexagons/Layout"
-import { Point } from "../../jsx/Game/Hexagons/Point"
+import { Layout } from "../../jsx/Hexagons/Layout"
+import { Point } from "../../jsx/Hexagons/Point"
 import { bgImage, kebabize } from "../../jsx/Game/Tile/bgImage"
 import { tilesMap } from "../../jsx/Game/Tile/tilesMap"
 // import svg from "../../assets/hex.svg"
@@ -27,7 +27,7 @@ export class __DEV__appendStyles {
                     this.generateCoords("pointy"),
                     this.generateCoords("flat"),
                 ].join("\n")
-                this.head.appendChild(style)
+                // this.head.appendChild(style)
                 console.log(style.innerHTML)
             }
         }, 0)
@@ -64,11 +64,12 @@ export class __DEV__appendStyles {
 
             const transform = `transform: translate(calc(${x - 1} * var(--R)), calc(${y - this.ratio} * var(--R))${isPointy ? `) rotate(-30deg)` : ")"};`
 
-            arr.push(`.${orientation} [data-qr="${hex.id}"] { ${[background, transform].join(" ")} }`)
+            arr.push(`.${orientation} [data-qr="${hex.id}"] { ${[transform].join(" ")} }`)
+            arr.push(`.${orientation} [data-qr="${hex.id}"]:not([class]) { ${[background].join(" ")} }`)
 
             if (tilesMap[hex.id] === undefined) {
-                arr.push(`.${orientation} [data-qr="${hex.id}"].p1 { background-image: url(${url}#_p1); }`)
-                arr.push(`.${orientation} [data-qr="${hex.id}"].p2 { background-image: url(${url}#_p2); }`)
+                arr.push(`.${orientation} [data-qr="${hex.id}"].p1 { background-image: url(${url}#bg-player-1); }`)
+                arr.push(`.${orientation} [data-qr="${hex.id}"].p2 { background-image: url(${url}#bg-player-2); }`)
             }
         })
 

@@ -10,18 +10,22 @@
     transition-duration: var(--duration);
     width: calc(var(--R) * 2);
     height: calc(var(--R) * 2 * var(--ratio));
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.flat [data-hovered-p1][data-qr],
-.pointy [data-hovered-p1][data-qr] {
+.flat [data-hovered-player-1][data-qr]:not([class]),
+.pointy [data-hovered-player-1][data-qr]:not([class]) {
     pointer-events: auto;
     cursor: none;
-    background-image: url("../../../assets/hex.svg#_-p-1");
+    background-image: url("../../../assets/hex.svg#hover-player-1");
 }
 
-.flat [data-hovered-p2][data-qr],
-.pointy [data-hovered-p2][data-qr] {
+.flat [data-hovered-player-2][data-qr]:not([class]),
+.pointy [data-hovered-player-2][data-qr]:not([class]) {
     pointer-events: auto;
     cursor: none;
-    background-image: url("../../../assets/hex.svg#_-p-2");
+    background-image: url("../../../assets/hex.svg#hover-player-2");
 }

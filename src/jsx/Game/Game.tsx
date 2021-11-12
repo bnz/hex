@@ -5,7 +5,7 @@ import { StartButton } from "../Rules/StartButton/StartButton"
 import { observer } from "mobx-react"
 import { Arena } from "./Arena/Arena"
 
-export const Hex: FC = observer(() => {
+export const Game: FC = observer(() => {
     switch (useUIStore().phase) {
         case UIPhase.PRE_GAME:
             return (

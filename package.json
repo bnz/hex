@@ -2,6 +2,7 @@
   "name": "hex",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://bnz.github.io/hex",
   "dependencies": {
     "@fontsource/roboto": "4.5.1",
     "@testing-library/jest-dom": "^5.11.4",

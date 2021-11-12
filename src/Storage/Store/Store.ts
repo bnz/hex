@@ -1,14 +1,15 @@
 import { makeAutoObservable } from "mobx"
-import { Layout } from "../../jsx/Game/Hexagons/Layout"
-import { Point } from "../../jsx/Game/Hexagons/Point"
+import { Layout } from "../../jsx/Hexagons/Layout"
+import { Point } from "../../jsx/Hexagons/Point"
 import { HexType, Keys, OrientationType, Tiles, Values } from "../../types"
 import { debounce } from "../../helpers/debounce"
 import { LocalStorageMgmnt } from "../LocalStorageMgmnt"
-import { Orientation } from "../../jsx/Game/Hexagons/Orientation"
+import { Orientation } from "../../jsx/Hexagons/Orientation"
 import { init } from "./applyers/init"
 import { onWindowResize } from "./applyers/onWindowResize"
 import { TileId } from "../../jsx/Game/Tile/TileId"
 import { PlayerMove } from "./applyers/onClick"
+import { findPath } from "./applyers/findPath"
 
 export class Store {
 
@@ -44,11 +45,13 @@ export class Store {
         })
 
         if (process.env.NODE_ENV === "development") {
-            // new (require("./__DEV__appendStyles").__DEV__appendStyles)(this.smallSide, this.largeSide, this.ratio, this.tiles)
+            new (require("./__DEV__appendStyles").__DEV__appendStyles)(this.smallSide, this.largeSide, this.ratio, this.tiles)
         }
+
+        findPath(this.tiles)
     }
 
-    storage = new LocalStorageMgmnt<Keys, Values>("game")
+    storage = new LocalStorageMgmnt<Keys, Values>("hex-game")
 
     private _tiles: Tiles = {} as Tiles
 

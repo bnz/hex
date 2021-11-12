@@ -1,6 +1,6 @@
-import { Hex } from "./jsx/Game/Hexagons/Hex"
 import { PlayerMove } from "./Storage/Store/applyers/onClick"
 import { TileId } from "./jsx/Game/Tile/TileId"
+import { Hex } from "./jsx/Hexagons/Hex"
 
 export enum UIPhase {
     PRE_GAME,

@@ -2,7 +2,7 @@ import { HexType, Tiles } from "../../../types"
 import { tilesMapKeys } from "../../../jsx/Game/Tile/tilesMap"
 import { QR } from "../defaults/tiles"
 import { TileId } from "../../../jsx/Game/Tile/TileId"
-import { Hex } from "../../../jsx/Game/Hexagons/Hex"
+import { Hex } from "../../../jsx/Hexagons/Hex"
 
 export const generateTiles = (data: QR[]): Tiles => {
     const result: Tiles = {} as Tiles

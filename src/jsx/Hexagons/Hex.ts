@@ -1,4 +1,4 @@
-import { TileId } from "../Tile/TileId"
+import { TileId } from "../Game/Tile/TileId"
 
 export class Hex {
 

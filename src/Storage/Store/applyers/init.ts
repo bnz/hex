@@ -1,6 +1,6 @@
 import { Store } from "../Store"
 import { HexType, OrientationType, Tiles } from "../../../types"
-import { Layout } from "../../../jsx/Game/Hexagons/Layout"
+import { Layout } from "../../../jsx/Hexagons/Layout"
 import { generateTiles} from "./generateTiles"
 import { tiles } from "../defaults/tiles"
 import { PlayerMove } from "./onClick"

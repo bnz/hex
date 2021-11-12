@@ -1,22 +1,29 @@
 import { FC } from "react"
-import { tilesMap } from "./tilesMap"
 import { observer } from "mobx-react"
-import { Layout } from "../Hexagons/Layout"
+import { Layout } from "../../Hexagons/Layout"
 import { useStore } from "../../../Storage/Store/StoreProvider"
 import { TileProps } from "./Tile"
+import { tilesMap } from "./tilesMap"
 
-export const TileLabel: FC<TileProps> = observer(({ qr}) => {
+export const TileLabel: FC<TileProps> = observer(({ qr }) => {
     const store = useStore()
 
     return (
         <div style={{
-            // display: "none",
-            color: "#000",
             transform: store.orientation === Layout.pointy ? "rotate(30deg)" : "",
-            fontSize: "0.75em",
+            color: "var(--main-text-color)",
+            backgroundColor: "var(--main-background-color)",
+            borderRadius: "var(--spacing)",
+            textAlign: "center",
+            ...(tilesMap[qr] ? {
+                padding: "var(--spacing)",
+                boxShadow: "0 0 1em rgba(0, 0, 0, 0.5)",
+            } : {
+                padding: 1,
+            }),
         }}>
             <div>{qr}</div>
-            <div>{tilesMap[qr]}</div>
+            {tilesMap[qr] ?? tilesMap[qr]}
         </div>
     )
 })

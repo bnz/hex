@@ -10,11 +10,11 @@ fs.readFile(
         }
 
         const arr = [...data.match(/(id=\")([a-z0-9_-]+)(\")/igm)]
-            .filter((item) =>
-                !item.match(/^id=\"bg/igm)
-                && !item.match(/^id=\"circle/igm)
-                && !item.match(/^id=\"line/igm)
-                && !item.match(/^id=\"arc/igm))
+            // .filter((item) =>
+            //     !item.match(/^id=\"bg/igm)
+            //     && !item.match(/^id=\"circle/igm)
+            //     && !item.match(/^id=\"line/igm)
+            //     && !item.match(/^id=\"arc/igm))
             .map((item) => item.replace(/\"/g, '').replace('id=', ''))
 
         const startMessage = "export type BgImageIds ="
