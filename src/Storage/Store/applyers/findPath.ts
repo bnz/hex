@@ -1,23 +1,22 @@
-import { HexType, Tiles } from "../../../types"
+import { HexType, Tile, Tiles } from "../../../types"
 import { TileId } from "../../../jsx/Game/Tile/TileId"
 import { tilesMap } from "../../../jsx/Game/Tile/tilesMap"
 
-const player1StartGates: TileId[] = []
-const player1EndGates: TileId[] = []
+const player1StartGates = new Set<TileId>()
+const player1EndGates = new Set<TileId>()
 const player2StartGates: TileId[] = []
 
-const elemets: any = []
+// const elements: any = []
 
-setTimeout(() => {
-
+const doGroups = () => {
     ;(Object.keys(tilesMap) as TileId[]).forEach((tileId) => {
         switch (tilesMap[tileId]) {
             case "player-1-start":
-                player1StartGates.push(tileId)
+                player1StartGates.add(tileId)
+                // elements.push(document.querySelector(`[data-qr="${tileId}"]`))
                 break
             case "player-1-end":
-                player1EndGates.push(tileId)
-                elemets.push(document.querySelector(`[data-qr="${tileId}"]`))
+                player1EndGates.add(tileId)
                 break
             case "player-2-start":
                 player2StartGates.push(tileId)
@@ -29,32 +28,46 @@ setTimeout(() => {
                 break
         }
     })
+}
 
-    console.log(elemets)
+// setTimeout(() => {
+//     doGroups()
+//     console.log(elements)
+// }, 0)
 
-}, 0)
-
-const p1Directions = [0, 5]
+doGroups()
 
 export const findPath = (tiles: Tiles) => {
+    const cache = new Set<TileId>()
 
     for (const tileId of player1StartGates) {
-        const { hex, type } = tiles[tileId]
+        getNeighbor(tiles, tiles[tileId], cache)
+    }
 
-        let a = false
+    console.log(cache)
+}
 
-        for (let direction of p1Directions) {
-            const neighbor = tiles[hex.neighbor(direction).id]
+const allDirections = [...Array(6).keys()]
+// const p1Directions = [0, 5]
 
-            if (neighbor.type === HexType.p1) {
-                // console.log({ tileId, direction, neighbor: neighbor.hex.id })
-                a = true
+const getNeighbor = (tiles: Tiles, tile: Tile, cache: Set<TileId>) => {
+    for (const direction of allDirections) {
+        const neighbor = tiles[tile.hex.neighbor(direction).id]
+
+        if (neighbor) {
+
+            if (neighbor.type === HexType.border && player1EndGates.has(neighbor.hex.id)) {
+                console.log("END GAME, WIN P1")
                 break
             }
-        }
 
-        if (a) {
-            break
+            if (neighbor.type === HexType.p1 && !cache.has(neighbor.hex.id)) {
+                cache.add(neighbor.hex.id)
+                console.log(document.querySelector(`[data-qr="${neighbor.hex.id}"]`))
+
+                getNeighbor(tiles, neighbor, cache)
+            }
+
         }
     }
 }

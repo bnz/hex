@@ -45,10 +45,12 @@ export class Store {
         })
 
         if (process.env.NODE_ENV === "development") {
-            new (require("./__DEV__appendStyles").__DEV__appendStyles)(this.smallSide, this.largeSide, this.ratio, this.tiles)
+            // new (require("./__DEV__appendStyles").__DEV__appendStyles)(this.smallSide, this.largeSide, this.ratio, this.tiles)
         }
 
-        findPath(this.tiles)
+        setTimeout(() => {
+            findPath(this.tiles)
+        }, 0)
     }
 
     storage = new LocalStorageMgmnt<Keys, Values>("hex-game")

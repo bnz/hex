@@ -1,13 +1,17 @@
 import { OrientationType, Tiles } from "../../types"
 import { Layout } from "../../jsx/Hexagons/Layout"
 import { Point } from "../../jsx/Hexagons/Point"
-import { bgImage, kebabize } from "../../jsx/Game/Tile/bgImage"
 import { tilesMap } from "../../jsx/Game/Tile/tilesMap"
-// import svg from "../../assets/hex.svg"
+import { TileId } from "../../jsx/Game/Tile/TileId"
+
+type Dictionary<K extends string, T> = { [P in K]?: T }
 
 export class __DEV__appendStyles {
 
     head = document.getElementsByTagName("head")[0]
+
+    // private url = require("../../assets/hex.svg").default
+    private url = "../../../assets/hex.svg"
 
     constructor(
         private smallSide: number,
@@ -26,11 +30,52 @@ export class __DEV__appendStyles {
                 style.innerHTML = [
                     this.generateCoords("pointy"),
                     this.generateCoords("flat"),
+                    this.generateBackgrounds(),
                 ].join("\n")
-                // this.head.appendChild(style)
+                this.head.appendChild(style)
                 console.log(style.innerHTML)
             }
         }, 0)
+    }
+
+    private generateBackgrounds(): string {
+        const arr: string[] = [
+            `[data-qr]:not([class]):not([data-b]) { background-image: url(${this.url}#bg); }`,
+            `[data-qr].p1 { background-image: url(${this.url}#bg-player-1); }`,
+            `[data-qr].p2 { background-image: url(${this.url}#bg-player-2); }`,
+        ]
+
+        const bgIds: Dictionary<string, TileId[]> = {}
+
+        Object.entries(this.tiles).forEach(([, { hex }]) => {
+            if (tilesMap[hex.id] !== undefined) {
+                const key = tilesMap[hex.id] as string
+                if (bgIds[key] === undefined) {
+                    bgIds[key] = []
+                }
+                bgIds[key]!.push(hex.id)
+            }
+        })
+
+        Object.keys(bgIds).forEach((bgId) => arr.push([
+            bgIds[bgId]?.map((id) => `[data-qr="${id}"]`).join(",\n"),
+
+            " { background-image: ",
+
+            (() => {
+                if (bgId.search(",") !== -1) {
+                    return bgId
+                    .split(",")
+                    .map((id) => `url(${this.url}#${id})`)
+                    .join(", ")
+                }
+                return `url(${this.url}#${bgId})`
+            })(),
+
+            "; }",
+        ].join("")))
+
+        return arr.join("\n")
     }
 
     private generateCoords(orientation: OrientationType): string {
@@ -49,28 +94,7 @@ export class __DEV__appendStyles {
 
         Object.entries(this.tiles).forEach(([, { hex }]) => {
             const { x, y } = layout.hexToPixel(hex)
-
-            // const url = svg
-            const url = "../../../assets/hex.svg"
-
-            const bg = bgImage(hex.id, url)
-
-            let background = ""
-            Object.keys(bg).forEach((key) => {
-                // @ts-ignore
-                background += [kebabize(key), bg[key]].join(": ")
-            })
-            background += ";"
-
-            const transform = `transform: translate(calc(${x - 1} * var(--R)), calc(${y - this.ratio} * var(--R))${isPointy ? `) rotate(-30deg)` : ")"};`
-
-            arr.push(`.${orientation} [data-qr="${hex.id}"] { ${[transform].join(" ")} }`)
-            arr.push(`.${orientation} [data-qr="${hex.id}"]:not([class]) { ${[background].join(" ")} }`)
-
-            if (tilesMap[hex.id] === undefined) {
-                arr.push(`.${orientation} [data-qr="${hex.id}"].p1 { background-image: url(${url}#bg-player-1); }`)
-                arr.push(`.${orientation} [data-qr="${hex.id}"].p2 { background-image: url(${url}#bg-player-2); }`)
-            }
+            arr.push(`.${orientation} [data-qr="${hex.id}"] { transform: translate(calc(${x - 1} * var(--R)), calc(${y - this.ratio} * var(--R))${isPointy ? `) rotate(-30deg)` : ")"}; }`)
         })
 
         return arr.join("\n")

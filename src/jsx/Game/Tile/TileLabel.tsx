@@ -23,7 +23,12 @@ export const TileLabel: FC<TileProps> = observer(({ qr }) => {
             }),
         }}>
             <div>{qr}</div>
-            {tilesMap[qr] ?? tilesMap[qr]}
+            <span style={{ whiteSpace: "nowrap" }}>
+                {tilesMap[qr] ? (
+                    // @ts-ignore
+                    Array.isArray(tilesMap[qr]) ? tilesMap[qr].join(", ") : tilesMap[qr]
+                ) : undefined}
+            </span>
         </div>
     )
 })
