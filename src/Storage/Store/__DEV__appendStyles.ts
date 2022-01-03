@@ -3,6 +3,7 @@ import { Layout } from "../../jsx/Hexagons/Layout"
 import { Point } from "../../jsx/Hexagons/Point"
 import { tilesMap } from "../../jsx/Game/Tile/tilesMap"
 import { TileId } from "../../jsx/Game/Tile/TileId"
+import { keys } from "../../helpers/keys"
 
 type Dictionary<K extends string, T> = { [P in K]?: T }
 
@@ -57,7 +58,7 @@ export class __DEV__appendStyles {
             }
         })
 
-        Object.keys(bgIds).forEach((bgId) => arr.push([
+        keys(bgIds).forEach((bgId) => arr.push([
             bgIds[bgId]?.map((id) => `[data-qr="${id}"]`).join(",\n"),
 
             " { background-image: ",

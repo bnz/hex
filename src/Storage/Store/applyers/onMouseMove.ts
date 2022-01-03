@@ -6,7 +6,7 @@ import { Store } from "../Store"
 type OnMouseMove = (store: Store) => (e: MouseEvent<HTMLDivElement>) => void
 
 export const onMouseMove: OnMouseMove = (store) => (e) => {
-    if (store.preSit) {
+    if (store.preSit || store.endGame) {
         return
     }
 

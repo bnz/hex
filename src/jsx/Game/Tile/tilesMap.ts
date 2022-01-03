@@ -1,5 +1,7 @@
 import { TileId } from "./TileId"
 import { BgImageIds } from "./BgImageIds"
+import { keys } from "../../../helpers/keys"
+import { HexType } from "../../../types"
 
 type Dictionary<K extends string, T> = { [P in K]?: T }
 
@@ -24,4 +26,30 @@ for (let i = 1; i <= 10; i++) {
     tilesMap[`6,${i * -1}` as TileId] = "player-2-end"
 }
 
-export const tilesMapKeys = Object.keys(tilesMap)
+export const tilesMapKeys = keys(tilesMap)
+
+export const players: [
+    name: HexType.p1 | HexType.p2,
+    start: Set<TileId>,
+    end: Set<TileId>
+][] = [
+    [HexType.p1, new Set<TileId>(), new Set<TileId>()],
+    [HexType.p2, new Set<TileId>(), new Set<TileId>()],
+]
+
+keys(tilesMap).forEach((tileId) => {
+    switch (tilesMap[tileId]) {
+        case "player-1-start":
+            players[0][1].add(tileId)
+            break
+        case "player-1-end":
+            players[0][2].add(tileId)
+            break
+        case "player-2-start":
+            players[1][1].add(tileId)
+            break
+        case "player-2-end":
+            players[1][2].add(tileId)
+            break
+    }
+})

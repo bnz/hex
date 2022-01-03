@@ -9,7 +9,8 @@ import { init } from "./applyers/init"
 import { onWindowResize } from "./applyers/onWindowResize"
 import { TileId } from "../../jsx/Game/Tile/TileId"
 import { PlayerMove } from "./applyers/onClick"
-import { findPath } from "./applyers/findPath"
+import { PathFinder } from "./applyers/PathFinder"
+import { endGame } from "./applyers/endGame"
 
 export class Store {
 
@@ -31,6 +32,8 @@ export class Store {
 
     hoveredId: TileId | null = null
 
+    endGame: null | { name: HexType.p1 | HexType.p2 } = null
+
     constructor() {
         init(this)
         makeAutoObservable<Store,
@@ -49,7 +52,7 @@ export class Store {
         }
 
         setTimeout(() => {
-            findPath(this.tiles)
+            new PathFinder(this.tiles, endGame(this))
         }, 0)
     }
 

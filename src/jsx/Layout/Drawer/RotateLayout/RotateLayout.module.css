@@ -13,7 +13,7 @@
     width: var(--size);
     height: var(--size);
 
-    background-image: url("../../../../assets/hex.svg#_");
+    background-image: url("../../../../assets/hex.svg#bg");
     background-size: contain;
     background-color: transparent;
     background-repeat: no-repeat;

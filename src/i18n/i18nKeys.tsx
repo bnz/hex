@@ -21,3 +21,5 @@ export type i18nKeys =
     | "text.placeChip"
     | "text.rotateField"
     | "text.showDrawer"
+    | "text.wins"
+    | "text.gameOver"

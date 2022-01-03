@@ -23,4 +23,6 @@ export const rus: LanguageMap = {
     "text.placeChip": "Поставить фишку",
     "text.rotateField": "Повернуть поле",
     "text.showDrawer": "Показать меню",
+    "text.wins": "Выиграл!",
+    "text.gameOver": "Игра окончена",
 }

@@ -23,4 +23,6 @@ export const eng: LanguageMap = {
     "text.placeChip": "Place chip",
     "text.rotateField": "Rotate field",
     "text.showDrawer": "Show drawer",
+    "text.wins": "Wins!",
+    "text.gameOver": "Game Over",
 }

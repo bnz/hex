@@ -19,6 +19,7 @@
     visibility: visible;
     transition-duration: var(--duration);
     transition-property: opacity, visibility;
+    pointer-events: none;
 }
 
 .header {
