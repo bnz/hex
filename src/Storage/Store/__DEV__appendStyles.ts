@@ -11,8 +11,8 @@ export class __DEV__appendStyles {
 
     head = document.getElementsByTagName("head")[0]
 
-    // private url = require("../../assets/hex.svg").default
-    private url = "../../../assets/hex.svg"
+    private url = require("../../assets/hex.svg").default
+    // private url = "../../../assets/hex.svg"
 
     constructor(
         private smallSide: number,

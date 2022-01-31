@@ -1,0 +1,7 @@
+.wrap {
+    position: absolute;
+    left: 50%;
+    top: calc(var(--R) * 2);
+    transform: translate(calc(-50% - var(--R)), 0);
+    /*box-shadow: 0 0 10em 5em rgba(0, 0, 0, 1);*/
+}

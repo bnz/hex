@@ -4,19 +4,17 @@ import { UIPhase } from "../../types"
 import { StartButton } from "../Rules/StartButton/StartButton"
 import { observer } from "mobx-react"
 import { Arena } from "./Arena/Arena"
+import { WelcomeLogo } from "../Components/WelcomeLogo/WelcomeLogo"
+import { Wrapper } from "../Components/WelcomeLogo/Wrapper"
 
 export const Game: FC = observer(() => {
     switch (useUIStore().phase) {
         case UIPhase.PRE_GAME:
             return (
-                <>
-                    <div style={{
-                        padding: "calc(var(--spacing) * 10)",
-                        textAlign: "center",
-                    }}>
-                        <StartButton />
-                    </div>
-                </>
+                <Wrapper>
+                    <WelcomeLogo />
+                    <StartButton />
+                </Wrapper>
             )
         case UIPhase.GAME:
             return (

@@ -11,6 +11,9 @@ import { TileId } from "../../jsx/Game/Tile/TileId"
 import { PlayerMove } from "./applyers/onClick"
 import { PathFinder } from "./applyers/PathFinder"
 import { endGame } from "./applyers/endGame"
+import { generateTiles } from "./applyers/generateTiles"
+import { tiles } from "./defaults/tiles"
+import { objectToHex } from "./applyers/objectToHex"
 
 export class Store {
 
@@ -49,6 +52,13 @@ export class Store {
 
         if (process.env.NODE_ENV === "development") {
             // new (require("./__DEV__appendStyles").__DEV__appendStyles)(this.smallSide, this.largeSide, this.ratio, this.tiles)
+
+            new (require("./__DEV__appendStyles").__DEV__appendStyles)(
+                12,
+                12 * this.ratio,
+                this.ratio,
+                objectToHex(generateTiles(tiles(11))),
+            )
         }
 
         setTimeout(() => {

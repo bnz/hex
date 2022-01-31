@@ -24,13 +24,11 @@ export const Drawer: FC = observer(() => {
                     <LanguageSwitcher />
                     <ThemeSwitcher />
                     {store.phase === UIPhase.GAME && (
-                        <>
-                            <div className={styles.actions}>
-                                <RestartGame />
-                                <RotateLayout />
-                                <KeyMapHints />
-                            </div>
-                        </>
+                        <div className={styles.actions}>
+                            <RestartGame />
+                            <RotateLayout />
+                            <KeyMapHints />
+                        </div>
                     )}
                 </div>
                 <Footer />

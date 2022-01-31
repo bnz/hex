@@ -1,7 +1,6 @@
 import { i18nKeys } from "./i18nKeys"
 import { rus } from "./rus"
 import { eng } from "./eng"
-// import { FC } from "react"
 
 export type Language = "rus" | "eng"
 
@@ -9,7 +8,7 @@ const languageDefaultState: Language = "rus"
 
 type I18n = (key: i18nKeys | string) => string
 
-const commonSettings = JSON.parse(localStorage.getItem("ui") || JSON.stringify({
+const commonSettings = JSON.parse(localStorage.getItem("hex-ui") || JSON.stringify({
     language: languageDefaultState,
 }))
 
@@ -31,11 +30,3 @@ export const i18n: I18n = (key) => {
 
     return res
 }
-
-// interface I18nProps {
-//     children: i18nKeys | string
-// }
-//
-// export const I18n: FC<I18nProps> = ({ children }) => (
-//     <>{i18n(children)}</>
-// )
